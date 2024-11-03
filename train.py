@@ -7,7 +7,7 @@ def training(w0, w1, rate, ite):
     try:
         data = pd.read_csv('data.csv')
         # datacheck
-        if not 'km' in data.columns or 'price' not in data.columns:
+        if not 'km' in data.columns or 'price' not in data.columns or data.empty:
             raise AssertionError("Error: Invalid Format in CSV")
         # remove nan and non digit data
         #data = data[pd.to_numeric(data['km'], errors='coerce').notnull()]  # 'mileage'が数値でない行を削除
@@ -17,7 +17,7 @@ def training(w0, w1, rate, ite):
         #data['km'] = pd.to_numeric(data['km'])
         #data['price'] = pd.to_numeric(data['price'])
         data = data[(data['km'] >= 0) & (data['price'] >= 0)]
-        if ft._len(data) == 0:
+        if data.empty:
             raise AssertionError("Error: There is no valid data in CSV")
 
         #
