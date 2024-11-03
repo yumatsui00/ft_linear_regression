@@ -36,16 +36,34 @@ def _to_numeric(values, errors='raise'):
                 raise ValueError(f"Invalid value for 'errors' parameter")
     return result
 
+#.notnull()
+def _notnull(arr):
+    return [x is not None and not np.isnan(x) for x in arr]
+
 #np.isnan()
 def _isnan(value):
     if value is None:
         return True
     return value != value
 
-def _notnull(arr):
-    # 各要素が None でも NaN でもない場合に True、それ以外は False を返すリストを作成
-    return [x is not None and not _isnan(x) for x in arr]
-
 #np.isinf()
 def _isinf(value):
     return value == float('inf') or value == float('-inf')
+
+def _max(arr):
+    if len(arr) == 0:
+        raise ValueError("Array is Empty")
+    maximum = arr[0]
+    for value in arr:
+        if value > maximum:
+            maximum = value
+    return maximum
+
+def _min(arr):
+    if len(arr) == 0:
+        raise ValueError("Array is Empty")
+    minimum = arr[0]
+    for value in arr:
+        if value < minimum:
+            minimum = value
+    return minimum

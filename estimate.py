@@ -6,7 +6,7 @@ def estimate():
         w0 = 0
         w1 = 0
         mileage = float(input("Input mileage: "))
-        learningRate = 0.0000000001
+        learningRate = 0.001
         iteration = 10000
 
         w0, w1 = training(w0, w1, learningRate, iteration)
