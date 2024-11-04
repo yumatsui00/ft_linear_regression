@@ -20,7 +20,7 @@ def check_precision():
         up = []
         down = []
         m = ft._mean(prices)
-        w0, w1 = training(0, 0, 0.001, 10000)
+        w0, w1 = training(0, 0, 0.01, 10000)
         for km, price in zip(mileages, prices):
             predict = w0 + w1 * km
             up.append((price - predict) ** 2)
